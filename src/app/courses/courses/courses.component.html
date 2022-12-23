@@ -1,5 +1,10 @@
-<mat-card>
-  <table mat-table [dataSource]="courses">
+<mat-card class="mat-elevation-z4">
+
+  <mat-toolbar color="primary"> 
+    Cursos Disponíveis
+  </mat-toolbar>
+
+  <table mat-table [dataSource]="courses" class="mat-elevation-z15">
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Curso </th>
