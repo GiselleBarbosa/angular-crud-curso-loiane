@@ -6,6 +6,7 @@ import { Observable } from "rxjs/internal/Observable";
 import { Course } from "../model/course";
 import { CoursesService } from '../services/courses.service';
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -16,11 +17,14 @@ export class CoursesComponent implements OnInit {
 
   courses$: Observable<Course[]>;
 
-  displayedColumns = ['name', 'category']; // lista de colunas a serem exibidas
+  displayedColumns = ['name', 'category', 'actions']; // lista de colunas a serem exibidas
 
   constructor(
     private CoursesService: CoursesService,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute) {
+
     this.courses$ = this.CoursesService.list()
       .pipe(
         catchError(error => {
@@ -39,4 +43,9 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+  onAdd() {
+    this.router.navigate(['new'], { relativeTo: this.route });
+  }
+
 }
