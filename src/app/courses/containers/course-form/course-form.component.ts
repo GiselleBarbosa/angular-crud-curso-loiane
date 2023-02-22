@@ -7,10 +7,6 @@ import { ActivatedRoute } from '@angular/router';
 import { CoursesService } from '../../services/courses.service';
 import { Course } from '../../model/course';
 
-interface Categories {
-  category: string;
-  viewCategory: string;
-}
 
 @Component({
   selector: 'app-course-form',
@@ -22,22 +18,14 @@ export class CourseFormComponent implements OnInit {
   form = this.formBuilder.group({
     _id: [''],
     name: [''],
-    category: [''],
+    category: ['']
   });
 
-  categories: Categories[] = [
-    { category: '', viewCategory: 'selecione um valor' },
-    { category: 'Front-end', viewCategory: 'Front-end' },
-    { category: 'Back-end', viewCategory: 'Back-end' }
-  ];
-
-  constructor(
-    private formBuilder: NonNullableFormBuilder,
+  constructor(private formBuilder: NonNullableFormBuilder,
     private service: CoursesService,
     private snackBar: MatSnackBar,
     private location: Location,
     private route: ActivatedRoute) {
-
   }
 
   ngOnInit(): void {
@@ -51,14 +39,14 @@ export class CourseFormComponent implements OnInit {
 
   onSubmit() {
     this.service.save(this.form.value)
-      .subscribe(result => this.onSucess(), error => this.onError());
+      .subscribe(result => this.onSuccess(), error => this.onError());
   }
 
   onCancel() {
     this.location.back();
   }
 
-  private onSucess() {
+  private onSuccess() {
     this.snackBar.open('Curso salvo com sucesso!', 'Fechar', { duration: 5000 });
     this.onCancel();
   }

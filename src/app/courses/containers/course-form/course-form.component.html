@@ -11,11 +11,10 @@
 
         <mat-label>Categoria </mat-label>
         <mat-select formControlName="category">
-          <mat-option *ngFor="let category of categories" [value]="category.category">
-            {{category.viewCategory}}
-          </mat-option>
+          <mat-option value="null"> </mat-option>
+          <mat-option value="Front-end">Front-End</mat-option>
+          <mat-option value="Back-end">Back-End</mat-option>
         </mat-select>
-
 
       </mat-form-field>
     </form>
