@@ -17,12 +17,13 @@ export class CoursesService {
     return this.httpClient.get<Course[]>(this.API)
       .pipe(
         // take(1), // apos receber a resposta do servidor, a conexão da inscricao é finalizada 
-        first(), // obtem apenas a 1 resposta do servidor 
-        delay(1),
+        first(),
+        // delay(5000), 
+        delay(1), // obtem apenas a 1 resposta do servidor 
         tap(courses => console.log(courses))
       );
   }
-  save(record: Course) {
+  save(record: Partial<Course>) {
     return this.httpClient.post<Course>(this.API, record).pipe(first());
   }
 }
