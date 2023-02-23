@@ -3,8 +3,8 @@
 @include mat-core();
 
 $custom-app-primary: mat-palette($mat-indigo);
-$custom-app-secondary: mat-palette($mat-blue, 900, 600, A100, A200);
-$custom-app-warn: mat-palette($mat-red, 300, 600, 100);
+$custom-app-secondary: mat-palette($mat-blue, 900);
+$custom-app-warn: mat-palette($mat-red);
 
 $custom-theme: mat-light-theme(
   $custom-app-primary,
